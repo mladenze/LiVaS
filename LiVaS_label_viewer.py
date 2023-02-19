@@ -1,16 +1,15 @@
 """
-Liver Label Viewer
+Viewing of LiVaS saved vasculature segmentations.
 
 1) Load preprocessed phase image arrays and LABELS.
 2) Scroll through 2D image slices of a 3D array.
 
-Usage: python liverLabelViewer.py
+Usage: python LiVaS_label_viewer.py
 
 Authors:
     Mladen Zecevic, mladenze@hotmail.com
-    Kyle Hasenstab, kylehasenstab@gmail.com
     
-Date: Jul 12, 2022
+Revision: Feb 19, 2023
 """
 #%%
 import numpy as np
