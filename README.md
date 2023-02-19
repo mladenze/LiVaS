@@ -1,4 +1,4 @@
-<img src = "./images/LiVaS_Logo.png" width="150">  
+<img src = "./images/LiVaS_Logo.png" width="160">  
 
 # Liver Vaculature Segmentation (LiVaS) 
 
@@ -88,16 +88,6 @@ dicom_dir = '/path/to/case/directory'
 # run clustering for the case
 voxel_clustering_pipeline( dicom_dir, sort_order_key_list )
 ```
-
-
-```tree
-
-/path/to/case/directory --> phase_array.npz
-/path/to/case/directory --> phase_corrected_arr.npz
-/path/to/case/directory --> clusters.npz
-```
-
-Where *.npz* file extension represents compressed Numpy array.
 
 ### User interface (UI) - Cluster selection and vascular labeling  
 The LiVaS UI allows users to quickly browse through precomputed cluster configurations (see *Voxel clustering* above) and match cluster labels to corresponding vessel groups.
