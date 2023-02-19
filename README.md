@@ -32,7 +32,6 @@ Setup your environment to meet the following version requirements:
 - numpy 1.19.2
 - pydicom 2.2.2
 - scipy 1.5.2
-- skimage 0.17.2
 - SimpleITK 2.0.2
 - faiss 1.6.5
 - matplotlib 3.3.2
