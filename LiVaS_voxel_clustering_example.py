@@ -6,13 +6,14 @@ An example on how to run voxel clustering pipeline.
 Usage: LiVaS_voxel_clustering_example "/path/to/a/case/to/be/processed/"
     The supplied path's target directory should contain subdirectories with 
     phase dicom files.'
+    
+License:
+    GNU GPL 2.0
 
 Authors:
     Mladen Zecevic, mladenze@hotmail.com
-    Kyle Hasenstab, kylehasenstab@gmail.com
     
-    
-Date: Aug 25, 2022
+Revision: Feb 19, 2023
 """
 #%%
 import os
