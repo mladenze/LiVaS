@@ -1,3 +1,6 @@
+<img src = "./images/LiVaS_Logo.png" width="150">  
+
+# Liver Vaculature Segmentation (LiVaS) 
 
 ## Introduction
 
@@ -21,7 +24,7 @@ graph TD
 /path/to/case/directory --> DELAYED_PHASE_SERIES_DIR
 ```
 
-![[Figure1_phase_images_case106428.png|680]]  
+![fig1](./images/Figure1_phase_images_case106428.png)  
 *Figure 1. Liver segmentation and registration. First row, left to right: pre-contrast, arterial phase, portal venous phase and delayed phase MR images. Second row: phase MR images after liver outer contour segmentation. Third row: phase MR images after post-contrast liver masks are registered to pre-contrast liver masks.*
 
 Setup your environment to meet the following version requirements:
@@ -87,19 +90,12 @@ voxel_clustering_pipeline( dicom_dir, sort_order_key_list )
 ```
 
 
-```mermaid
-graph TD
+```tree
 
 /path/to/case/directory --> phase_array.npz
 /path/to/case/directory --> phase_corrected_arr.npz
 /path/to/case/directory --> clusters.npz
 ```
-
-The following file structure will be created:
-- */path/to/case/directory*
-	- *phase_array.npz* (4D numpy array of the original images)
-	- *phase_corrected_arr.npz* (4D image array after bias field correction)
-	- *clusters.npz* (resulting 3D voxel clusters array)
 
 Where *.npz* file extension represents compressed Numpy array.
 
@@ -111,16 +107,16 @@ python LiVaS_UI.py
 ```
 The main UI window presents liver images and clustering outputs as three axial slices that can be scrolled through (Figure 2).  Once the user selects the number of clusters that best segment the liver vasculature, vessel groups are labeled using default keys for Portal Veins and Hepatic Veins, after which segmentation and labels are saved to disk.
 
-![[LiVaS_UI_3.png]]  
+![fig2](./images/LiVaS_UI_3.png)  
 *Figure 2. LiVaS User Interface (UI) window with 3 arterial axial slices: reference image (left), reference image with overlaid candidate cluster (center), and reference image with overlaid selected and labeled anatomy (right).*
 
 ### Output
-LiVaS voxel clustering, as well as cluster selection and labeling, generate the following output files:
-*/path/to/case/directory*
-	- *phase_array.npz* (4D numpy array of the original images)
-	- *phase_corrected_arr.npz* (4D image array after bias field correction)
-	- *clusters.npz* (voxel clusters array )
-	- *labels.npz* (3D labels array)
+LiVaS voxel clustering, as well as cluster selection and labeling, generate the following output files:  
+- */path/to/case/directory*  
+	- *phase_array.npz* (4D numpy array of the original images)  
+	- *phase_corrected_arr.npz* (4D image array after bias field correction)  
+	- *clusters.npz* (voxel clusters array )  
+	- *labels.npz* (3D labels array)  
 
 To use original phase image array along with vasculature labels array, the relevant files must be first loaded from disk:
 ```python
