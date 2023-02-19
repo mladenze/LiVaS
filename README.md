@@ -59,7 +59,7 @@ conda list # list all the packages in the environment
 2. Clone the project repository:
 ```bash
 cd /path/to/project/directory
-git clone https://github.com/username/repo.git
+git clone https://github.com/mladenze/LiVaS.git
 ```
 
 ## Usage
