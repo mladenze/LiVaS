@@ -28,10 +28,12 @@ CaseID_PRE_PHASE_DIR --> ...
 /path/to/case/directory --> CaseID_DELAYED_PHASE_DIR
 ```
 - Each contrast series direcotry is prefixed with unique case (subject) identifier separated by the underscore *'_'* from the rest of the directory name. Here is an example case subdirectory structure where patient ID is 117370:
+
 > 117370_1219655612_MR_2016-09-17_102928_._S.10.ARTERIAL.MASKED.DEF.ALIGNED_n120__00000
 > 117370_1219655612_MR_2016-09-17_102928_._S.10.DELAYED.1.MASKED.DEF.ALIGNED_n120__00000
 > 117370_1219655612_MR_2016-09-17_102928_._S.10.PRE.MASKED_n120__00000
 > 117370_1219655612_MR_2016-09-17_102928_._S.10.PVP.MASKED.DEF.ALIGNED_n120__00000
+
 
 ![fig1](./images/Figure1_phase_images_case106428.png)  
 *Figure 1. Liver segmentation and registration. First row, left to right: pre-contrast, arterial phase, portal venous phase and delayed phase MR images. Second row: phase MR images after liver outer contour segmentation. Third row: phase MR images after post-contrast liver masks are registered to pre-contrast liver masks.*
@@ -71,8 +73,11 @@ git clone https://github.com/mladenze/LiVaS.git
 ```
 
 ## Usage
-
-### Voxel clustering  
+The LiVaS usage framework consists of two steps:
+1. Voxel signal intensity trajectories are clustered into a preestablished number of groups and saved to disk.
+2. Using a customized user interface (UI): a) select voxel clusters that accurately segment the liver veins, b) label the selected clusters as portal veins (PV) or hepatic veins (HV), c) save the labels to disk.
+ 
+### 1) Voxel clustering  
 1. Navigate to local project repository:
 ```bash
 cd /path/to/project/directory/LiVaS/
@@ -96,7 +101,7 @@ dicom_dir = '/path/to/case/directory'
 voxel_clustering_pipeline( dicom_dir, sort_order_key_list )
 ```
 
-### User interface (UI) - Cluster selection and vascular labeling  
+### 2) User interface (UI) - Cluster selection and vascular labeling  
 The LiVaS UI allows users to quickly browse through precomputed cluster configurations (see *Voxel clustering* above) and match cluster labels to corresponding vessel groups.
 The UI can be launched with the following shell command:
 ```bash
