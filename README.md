@@ -10,23 +10,28 @@ LiVaS is a semi-automated pipeline and user interface that allows for the quick 
 
 ## Prerequisites
 
-Prior to using LiVaS software, ensure that the following is true for each case:
-- pre-contrast, arterial, portal venous and delayed phase images are present for the case (Figure 1, 1st row)
-- the liver outer contour is segmented on the pre- and post-contrast MR images (Figure 1, 2nd row)
-- post-contrast liver masks (populated with liver signal intensities) are registered to the pre-contrast liver mask (Figure 1, 3rd row)
-- each pre- and post- contrast series are all located in their own directory within a parent case directory (*/path/to/case/directory* in further text). Here is an example directory structure:
+Prior to using LiVaS software, ensure that the following are true for each case:
+- Pre-contrast, arterial, portal venous and delayed phase images are present for the case (Figure 1, 1st row)
+- The liver outer contour is segmented on the pre- and post-contrast MR images (Figure 1, 2nd row)
+- Post-contrast liver masks (populated with liver signal intensities) are registered to the pre-contrast liver mask (Figure 1, 3rd row)
+- Each pre- and post- contrast series are all located in their own directory within a parent case directory (*/path/to/case/directory* in further text). Here is a conceptual diagram of a directory structure:
 ```mermaid
 graph TD
 
-/path/to/case/directory --> PRE_PHASE_SERIES_DIR
-PRE_PHASE_SERIES_DIR --> 1.dcm
-PRE_PHASE_SERIES_DIR --> 2.dcm
-PRE_PHASE_SERIES_DIR --> 3.dcm
-PRE_PHASE_SERIES_DIR --> ...
-/path/to/case/directory --> ARTERIAL_PHASE_SERIES_DIR
-/path/to/case/directory --> PVP_PHASE_SERIES_DIR
-/path/to/case/directory --> DELAYED_PHASE_SERIES_DIR
+/path/to/case/directory --> CaseID_PRE_PHASE_DIR
+CaseID_PRE_PHASE_DIR --> 1.dcm
+CaseID_PRE_PHASE_DIR --> 2.dcm
+CaseID_PRE_PHASE_DIR --> 3.dcm
+CaseID_PRE_PHASE_DIR --> ...
+/path/to/case/directory --> CaseID_ARTERIAL_PHASE_DIR
+/path/to/case/directory --> CaseID_PHASE_DIR
+/path/to/case/directory --> CaseID_DELAYED_PHASE_DIR
 ```
+- Each contrast series direcotry is prefixed with unique case (subject) identifier separated by the underscore *'_'* from the rest of the directory name. Here is an example case subdirectory structure where patient ID is 117370:
+> 117370_1219655612_MR_2016-09-17_102928_._S.10.ARTERIAL.MASKED.DEF.ALIGNED_n120__00000
+> 117370_1219655612_MR_2016-09-17_102928_._S.10.DELAYED.1.MASKED.DEF.ALIGNED_n120__00000
+> 117370_1219655612_MR_2016-09-17_102928_._S.10.PRE.MASKED_n120__00000
+> 117370_1219655612_MR_2016-09-17_102928_._S.10.PVP.MASKED.DEF.ALIGNED_n120__00000
 
 ![fig1](./images/Figure1_phase_images_case106428.png)  
 *Figure 1. Liver segmentation and registration. First row, left to right: pre-contrast, arterial phase, portal venous phase and delayed phase MR images. Second row: phase MR images after liver outer contour segmentation. Third row: phase MR images after post-contrast liver masks are registered to pre-contrast liver masks.*
@@ -57,7 +62,6 @@ pip install simpleitk==2.0.2
 conda install -c conda-forge faiss=1.6.5
 conda list # list all the packages in the environment
 ```
-
 ### Clone the LiVaS GitHub repository:
 Crete a project directory on your computer (*/path/to/project/directory* in further text) and clone the project repository:
 ```bash
