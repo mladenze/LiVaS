@@ -19,6 +19,10 @@ Prior to using LiVaS software, ensure that the following is true for each case:
 graph TD
 
 /path/to/case/directory --> PRE_PHASE_SERIES_DIR
+PRE_PHASE_SERIES_DIR --> 1.dcm
+PRE_PHASE_SERIES_DIR --> 2.dcm
+PRE_PHASE_SERIES_DIR --> 3.dcm
+PRE_PHASE_SERIES_DIR --> ...
 /path/to/case/directory --> ARTERIAL_PHASE_SERIES_DIR
 /path/to/case/directory --> PVP_PHASE_SERIES_DIR
 /path/to/case/directory --> DELAYED_PHASE_SERIES_DIR
