@@ -114,6 +114,8 @@ LiVaS voxel clustering, as well as cluster selection and labeling, generate the 
 
 To use original phase image array along with vasculature labels array, the relevant files must be first loaded from disk:
 ```python
+import numpy as np
+
 def load_NPZs(dicom_dir: str) -> Tuple[np.ndarray, np.ndarray]:
     with np.load(dicom_dir + '/phase_array.npz') as data:
         phase_array = data['phase_array']
