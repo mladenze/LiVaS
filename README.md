@@ -12,8 +12,8 @@ LiVaS is a semi-automated pipeline and user interface that allows for the quick 
 
 Prior to using LiVaS software, ensure that the following is true for each case:
 - pre-contrast, arterial, portal venous and delayed phase images are present for the case
-- the liver outer contour is segmented on the pre- and post-contrast MR images
-- post-contrast liver masks (populated with liver signal intensities) are registered to the pre-contrast liver mask (Figure 1)
+- the liver outer contour is segmented on the pre- and post-contrast MR images (Figure 1, 2nd row)
+- post-contrast liver masks (populated with liver signal intensities) are registered to the pre-contrast liver mask (Figure 1, 3rd row)
 - each pre- and post- contrast series are all located in their own directory within a parent case directory (*/path/to/case/directory* in further text). Here is an example directory structure:
 ```mermaid
 graph TD
