@@ -59,9 +59,9 @@ conda list # list all the packages in the environment
 ```
 
 ### Clone the LiVaS GitHub repository:
-1. Crete a project directory on your computer (*/path/to/project/directory* in further text).
-2. Clone the project repository:
+Crete a project directory on your computer (*/path/to/project/directory* in further text) and clone the project repository:
 ```bash
+mkdir /path/to/project/directory # create project directory if not already present
 cd /path/to/project/directory
 git clone https://github.com/mladenze/LiVaS.git
 ```
@@ -69,14 +69,14 @@ git clone https://github.com/mladenze/LiVaS.git
 ## Usage
 
 ### Voxel clustering  
-1. Navigate to project directory:
+1. Navigate to local project repository:
 ```bash
-cd /path/to/project/directory
+cd /path/to/project/directory/LiVaS/
 ```
 2. An example python code for voxel clustering:
 ```python
 import sys
-sys.path.append('/path/to/project/directory')
+sys.path.append('/path/to/project/directory/LiVaS/')
 from LiVaS_helper import *
 
 #-------------------------------------------------------------------------
@@ -96,6 +96,7 @@ voxel_clustering_pipeline( dicom_dir, sort_order_key_list )
 The LiVaS UI allows users to quickly browse through precomputed cluster configurations (see *Voxel clustering* above) and match cluster labels to corresponding vessel groups.
 The UI can be launched with the following shell command:
 ```bash
+cd /path/to/project/directory/LiVaS/
 python LiVaS_UI.py
 ```
 The main UI window presents liver images and clustering outputs as three axial slices that can be scrolled through (Figure 2).  Once the user selects the number of clusters that best segment the liver vasculature, vessel groups are labeled using default keys for Portal Veins and Hepatic Veins, after which segmentation and labels are saved to disk.
