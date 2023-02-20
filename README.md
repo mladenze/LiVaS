@@ -27,7 +27,7 @@ graph TD
 ![fig1](./images/Figure1_phase_images_case106428.png)  
 *Figure 1. Liver segmentation and registration. First row, left to right: pre-contrast, arterial phase, portal venous phase and delayed phase MR images. Second row: phase MR images after liver outer contour segmentation. Third row: phase MR images after post-contrast liver masks are registered to pre-contrast liver masks.*
 
-### Version requirements:
+### Python modules requirements:
 - python 3.8.5
 - numpy 1.19.2
 - pydicom 2.2.2
