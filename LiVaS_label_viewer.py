@@ -5,9 +5,6 @@ Viewing of LiVaS saved vasculature segmentations.
 2) Scroll through 2D image slices of a 3D array.
 
 Usage: python LiVaS_label_viewer.py
-
-Authors:
-    Mladen Zecevic, mladenze@hotmail.com
     
 Revision: Feb 19, 2023
 """

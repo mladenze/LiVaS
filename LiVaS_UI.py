@@ -13,10 +13,6 @@ Usage: python liVaS_UI.py
 License:
     GNU GPL 2.0
 
-Authors:
-    Mladen Zecevic, mladenze@hotmail.com
-    Kyle Hasenstab, kylehasenstab@gmail.com
-
 Revision: Feb 17, 2023
 """
 #%%

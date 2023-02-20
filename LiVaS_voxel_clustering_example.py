@@ -9,9 +9,6 @@ Usage: LiVaS_voxel_clustering_example "/path/to/a/case/to/be/processed/"
     
 License:
     GNU GPL 2.0
-
-Authors:
-    Mladen Zecevic, mladenze@hotmail.com
     
 Revision: Feb 19, 2023
 """
