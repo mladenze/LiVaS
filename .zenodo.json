@@ -1,0 +1,20 @@
+{
+    "title": "Liver Vaculature Segmentation (LiVaS)",
+    "description": "LiVaS is a semi-automated pipeline and user interface that allows for a quick segmentation and labeling of 3D liver vasculature from multiphase MR images.",
+    "creators": [
+        {
+            "name": "Zečević, Mladen",
+            "affiliation": "University of Washington",
+            "orcid": "0000-0002-0437-2181"
+        },
+        {
+            "name": "Hasenstab, Kyle",
+            "affiliation": "San Diego State University"
+        },
+	{
+            "name": "Cunha, Guilherme Moura",
+            "affiliation": "University of Washington"
+        }
+    ]
+}
+
