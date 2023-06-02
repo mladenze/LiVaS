@@ -1,6 +1,7 @@
 <img src = "./images/LiVaS_Logo.png" width="160">  
 
 # Liver Vaculature Segmentation (LiVaS) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7989974.svg)](https://doi.org/10.5281/zenodo.7989974)  
 
 ## Introduction
 
@@ -141,3 +142,22 @@ phase_array, labels = load_NPZs(dicom_dir)
 - Mladen Zečević
 - Kyle Hasenstab
 - Guilherme Moura Cunha
+
+## Cite LiVaS software
+> 1. Zečević, Mladen, Hasenstab, Kyle, Cunha, Guilherme Moura. Liver Vaculature Segmentation (LiVaS). Published online May 31, 2023. doi:10.5281/zenodo.7989974
+
+#### BibTeX  
+```
+@software{zecevic_mladen_2023_7989974,
+  author       = {Zečević, Mladen and
+                  Hasenstab, Kyle and
+                  Cunha, Guilherme Moura},
+  title        = {Liver Vaculature Segmentation (LiVaS)},
+  month        = may,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {v0.1.0},
+  doi          = {10.5281/zenodo.7989974},
+  url          = {https://doi.org/10.5281/zenodo.7989974}
+}
+```
