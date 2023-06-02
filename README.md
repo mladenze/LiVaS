@@ -1,7 +1,7 @@
 <img src = "./images/LiVaS_Logo.png" width="160">  
 
 # Liver Vaculature Segmentation (LiVaS) 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7989974.svg)](https://doi.org/10.5281/zenodo.7989974)  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7989973.svg)](https://doi.org/10.5281/zenodo.7989973)  
 
 ## Introduction
 
