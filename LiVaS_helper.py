@@ -25,6 +25,7 @@ import pydicom
 import os
 from typing import List, Tuple
 import faiss
+import string
 
 def folderChooser() -> str:
     """
@@ -61,12 +62,16 @@ def sortDcmSeriesByPhase(strings_to_sort: List[str],
     # sort_order = ["PRE","ARTERIAL", "PVP.M", "PVP", "DELAYED.M","DELAYED.",
     #               "HBP.M","HBP.","SEG.Portal","SEG.Hepatic","SEG.Arteries","aDummy"]
     # aDummy element can be replaced with additional phase search terms
+    
+    #---------------- sorting function ----------------            
     def sortFun(x):
         for j, phrase in enumerate(sort_order_list):
             if phrase in x:
+                #print(j, phrase)
                 return (j, x)
+        return (len(sort_order_list), x) # Handles strings not matching any phrase in sort_order_list
+    #--------------------------------------------------        
     return(sorted(strings_to_sort, key=sortFun))
-
 
 def load_dicoms(dicom_dir: str):
     """
