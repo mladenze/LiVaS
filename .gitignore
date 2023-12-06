@@ -1,3 +1,7 @@
 __pycache__
+.DS_Store
 LiVaS_voxel_clustering_batch_wrapper.py
 unit_test.py
+setup.py
+icon.png
+
