@@ -254,6 +254,29 @@ def cluster_phases(phase_array_: np.ndarray,
     # return cluster labels
     return clust
 
+def resize_array_interpolation(arr: np.ndarray, target_shape: Tuple[int, int, int]) -> np.ndarray:
+    """Resize an array to the target shape using interpolation, only if sizes differ.
+
+    Parameters
+    ----------
+    arr (np.ndarray): The input array to be resized.
+    target_shape (Tuple[int, int, int]): The target dimensions to resize to.
+
+    Returns
+    -------
+    np.ndarray: The resized array.
+    """
+    # Check if the current array shape matches the target shape
+    if arr.shape != target_shape:
+        print(f"Resizing from {arr.shape} to {target_shape}.")
+        # Calculate the scale factors for each dimension
+        scale_factors = [t/s for s, t in zip(arr.shape, target_shape)]
+        # Use zoom for resampling
+        return zoom(arr, scale_factors)
+    else:
+        print(f"No resizing needed for array with shape {arr.shape}.")
+        return arr
+
 def voxel_clustering_pipeline(dicom_dir: str, sort_order_key_list: List[str]):
     """
     Load the images, perform bias field correction, then for each K size apply 
@@ -295,7 +318,16 @@ def voxel_clustering_pipeline(dicom_dir: str, sort_order_key_list: List[str]):
     # load phase images into a 4D array
     images = [load_dicoms(os.path.join(dicom_dir, phase_dir))[1]
               for phase_dir in dicom_series_list]
-    print("Loaded 4D image array shape = %s \n" % str(np.array(images).shape))
+    
+    # Target shape is the shape of the first image array
+	target_shape = images[0].shape
+
+	# Resize image arrays if necessary
+	images = [resize_array_interpolation(arr, target_shape) for arr in images]
+
+	# Combine into a 4D array
+	images = np.stack(images)
+    print("Loaded 4D image array shape = %s \n" % str(images.shape))
     
     # transpose the image array
     phase_array = np.transpose(images, (1,2,3,0))
