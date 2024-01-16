@@ -90,6 +90,9 @@ def load_dicoms(dicom_dir: str):
     # read in all dicom files
     dicoms = [pydicom.read_file(dicom_file) for dicom_file in dicom_files]
     
+    # Keep only those with pixel data
+    dicoms = [dicom for dicom in dicoms if 'PixelData' in dicom]
+    
     # sort dicoms by slices
     slice_sorts = np.argsort([dicom.SliceLocation for dicom in dicoms])
     dicoms = [dicoms[slice_sort] for slice_sort in slice_sorts]
