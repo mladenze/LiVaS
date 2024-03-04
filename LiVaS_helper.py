@@ -11,7 +11,7 @@ Usage:
 License:
     GNU GPL 2.0
  
-Revision: Dec 2, 2023
+Revision: Mar 3, 2024
 """
 
 import numpy as np
@@ -44,34 +44,47 @@ def folderChooser() -> str:
     else:
         return("break")
     
-def anyMatch(x: str, match_list: List[str]) -> bool:
+def anyMatch(x: str, match_list: List[str], ignore_case: bool = False) -> bool:
     """
-    Return True if any element of the match_list is in x.
+    Return True if any element of the match_list is in x, optionally ignoring case.
     """
+    if ignore_case:
+        x = x.lower()
+        match_list = [item.lower() for item in match_list]
+    
     for key in match_list:
         if key in x:
             return True
     return False
     
 def sortDcmSeriesByPhase(strings_to_sort: List[str],
-                         sort_order_list: List[str]) -> List[str]:
+                         sort_order_list: List[str],
+                         ignore_case: bool = False) -> List[str]:
     """
     Sort strings_to_sort elements based on the order of keys from 
-    sort_order_list.
+    sort_order_list. If ignore_case is True, sorting will ignore case.
     """
     # sort_order = ["PRE","ARTERIAL", "PVP.M", "PVP", "DELAYED.M","DELAYED.",
     #               "HBP.M","HBP.","SEG.Portal","SEG.Hepatic","SEG.Arteries","aDummy"]
     # aDummy element can be replaced with additional phase search terms
     
-    #---------------- sorting function ----------------            
-    def sortFun(x):
-        for j, phrase in enumerate(sort_order_list):
-            if phrase in x:
-                #print(j, phrase)
-                return (j, x)
-        return (len(sort_order_list), x) # Handles strings not matching any phrase in sort_order_list
-    #--------------------------------------------------        
-    return(sorted(strings_to_sort, key=sortFun))
+    # Handle case sensitivity based on the ignore_case flag
+    if ignore_case:
+        lowered_sort_order_list = [phrase.lower() for phrase in sort_order_list]
+        def sortFun(x):
+            lowered_x = x.lower()
+            for j, phrase in enumerate(lowered_sort_order_list):
+                if phrase in lowered_x:
+                    return (j, x)
+            return (len(lowered_sort_order_list), x)  # Handles strings not matching any phrase in sort_order_list
+    else:
+        def sortFun(x):
+            for j, phrase in enumerate(sort_order_list):
+                if phrase in x:
+                    return (j, x)
+            return (len(sort_order_list), x)  # Handles strings not matching any phrase in sort_order_list
+
+    return sorted(strings_to_sort, key=sortFun)
 
 def load_dicoms(dicom_dir: str):
     """
@@ -323,13 +336,13 @@ def voxel_clustering_pipeline(dicom_dir: str, sort_order_key_list: List[str]):
               for phase_dir in dicom_series_list]
     
     # Target shape is the shape of the first image array
-	target_shape = images[0].shape
+    target_shape = images[0].shape
 
 	# Resize image arrays if necessary
-	images = [resize_array_interpolation(arr, target_shape) for arr in images]
+    images = [resize_array_interpolation(arr, target_shape) for arr in images]
 
 	# Combine into a 4D array
-	images = np.stack(images)
+    images = np.stack(images)
     print("Loaded 4D image array shape = %s \n" % str(images.shape))
     
     # transpose the image array
